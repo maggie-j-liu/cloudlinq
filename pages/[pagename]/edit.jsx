@@ -4,11 +4,15 @@ import getPageInfo from "@/utils/getPageInfo";
 import { useRef, useState } from "react";
 import firebase from "@/utils/firebase";
 import { useRouter } from "next/router";
+import { FiPlusSquare } from "react-icons/fi";
+import Social from "@/components/Social";
+import Link from "next/link";
 
 const unsavedDefaults = {
   creatorName: false,
   profileImage: false,
   about: false,
+  socials: false,
 };
 
 const EditPage = ({
@@ -19,12 +23,15 @@ const EditPage = ({
   profileImage,
   about,
   pageKey,
+  socials = [],
 }) => {
   const { user, loading } = useUser();
   const [newCreatorName, setNewCreatorName] = useState(creatorName);
   const [newAbout, setNewAbout] = useState(about);
-  const [unsaved, setUnsaved] = useState(unsavedDefaults);
   const [newImage, setNewImage] = useState(profileImage);
+  const [newSocials, setNewSocials] = useState(socials);
+
+  const [unsaved, setUnsaved] = useState(unsavedDefaults);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const router = useRouter();
   const inputRef = useRef();
@@ -61,10 +68,17 @@ const EditPage = ({
       checkForUnsavedChanges();
     }
   };
+
+  const addNewSocial = () => {
+    console.log("addnew");
+    setNewSocials([...newSocials, { link: "", description: "" }]);
+  };
+
   const saveChanges = async () => {
     const updatedVals = {
       creatorName: newCreatorName,
       about: newAbout,
+      socials: newSocials,
     };
     if (unsaved.profileImage) {
       const storage = firebase.storage();
@@ -80,7 +94,7 @@ const EditPage = ({
     await db.ref(`pages/${pageKey}`).update(updatedVals);
     setUnsaved(unsavedDefaults);
     setHasUnsavedChanges(false);
-    router.replace(router.asPath);
+    router.replace(router.asPath, router.asPath, { scroll: false });
   };
   if (loading) {
     return null;
@@ -89,7 +103,7 @@ const EditPage = ({
     return <FourOhFour />;
   }
   return (
-    <div className={"mt-8 flex flex-col w-full max-w-4xl mx-auto"}>
+    <div className={"my-8 flex flex-col w-full max-w-4xl mx-auto"}>
       <div>
         <button
           className={`${
@@ -129,10 +143,18 @@ const EditPage = ({
           className={"borderless-input text-3xl mt-1 font-bold text-center"}
         />
       </label>
-      <h2 className={"self-center text-xl mt-2 text-gray-700"}>@{name}</h2>
+      <Link href={`/${name}`}>
+        <a
+          className={
+            "self-center text-xl mt-2 text-primary-600 font-medium hover:wavy"
+          }
+        >
+          @{name}
+        </a>
+      </Link>
       <div className={"mt-8"}>
         <label>
-          <h3 className={"text-xl font-medium wavy"}>About Me</h3>
+          <h3 className={"text-xl font-medium wavy mb-2"}>About Me</h3>
           <textarea
             value={newAbout}
             onChange={(e) => {
@@ -141,11 +163,50 @@ const EditPage = ({
               setUnsaved({ ...unsaved });
             }}
             onBlur={() => checkForUnsavedChanges()}
-            className={
-              "mt-2 text-lg text-gray-800 borderless-input w-full h-36"
-            }
+            className={"text-lg text-gray-800 borderless-input w-full h-36"}
+            placeholder={"Describe yourself!"}
           />
         </label>
+      </div>
+      <div className={"mt-8"}>
+        <div className={"flex justify-between"}>
+          <h3 className={"text-xl font-medium wavy mb-2"}>My Socials</h3>
+          <button
+            className={
+              "flex items-center gap-2 bg-primary-100 px-4 py-1 rounded-md"
+            }
+            onClick={() => addNewSocial()}
+          >
+            <FiPlusSquare />
+            Add new
+          </button>
+        </div>
+        <p>You can find me at:</p>
+        <div className={"mt-4 space-y-8"}>
+          {newSocials.map(({ link, description }, idx) => (
+            <Social
+              key={idx}
+              link={link}
+              description={description}
+              edit
+              onLinkChange={(e) => {
+                newSocials[idx].link = e.target.value;
+                setNewSocials([...newSocials]);
+                unsaved.socials = true;
+                setUnsaved({ ...unsaved });
+              }}
+              onDescriptionChange={(e) => {
+                newSocials[idx].description = e.target.value;
+                setNewSocials([...newSocials]);
+                unsaved.socials = true;
+                setUnsaved({ ...unsaved });
+              }}
+              onLinkBlur={() => checkForUnsavedChanges()}
+              onDescriptionBlur={() => checkForUnsavedChanges()}
+            />
+          ))}
+        </div>
+        {newSocials.length == 0 && <p>Nothing here yet!</p>}
       </div>
     </div>
   );

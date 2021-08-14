@@ -3,13 +3,22 @@ import useUser from "@/utils/useUser";
 import Link from "next/link";
 import getPageInfo from "@/utils/getPageInfo";
 import FourOhFour from "@/components/FourOhFour";
-const Page = ({ name, creator, creatorName, profileImage, about, error }) => {
+import Social from "@/components/Social";
+const Page = ({
+  name,
+  creator,
+  creatorName,
+  profileImage,
+  about,
+  socials,
+  error,
+}) => {
   const { user } = useUser();
   if (error) {
     return <FourOhFour />;
   }
   return (
-    <div className={"mt-8 flex flex-col w-full max-w-4xl mx-auto"}>
+    <div className={"my-8 flex flex-col w-full max-w-4xl mx-auto"}>
       {user && creator === user.uid && (
         <Link href={`/${name}/edit`}>
           <a
@@ -29,10 +38,30 @@ const Page = ({ name, creator, creatorName, profileImage, about, error }) => {
         }
       />
       <h1 className={"self-center text-3xl mt-4 font-bold"}>{creatorName}</h1>
-      <h2 className={"self-center text-xl mt-2 text-gray-700"}>@{name}</h2>
+      <Link href={`/${name}`}>
+        <a
+          className={
+            "self-center text-xl mt-2 text-primary-600 font-medium hover:wavy"
+          }
+        >
+          @{name}
+        </a>
+      </Link>
       <div className={"mt-8"}>
-        <h3 className={"text-xl font-medium wavy"}>About Me</h3>
-        <p className={"mt-2 text-lg text-gray-500"}>{about}</p>
+        <h3 className={"text-xl font-medium wavy mb-2"}>About Me</h3>
+        <p className={"text-lg text-gray-500"}>{about}</p>
+      </div>
+      <div className={"mt-8"}>
+        <div className={"flex justify-between"}>
+          <h3 className={"text-xl font-medium wavy mb-2"}>My Socials</h3>
+        </div>
+        <p>You can find me at:</p>
+        <div className={"mt-4 space-y-8"}>
+          {socials.map(({ link, description }, idx) => (
+            <Social key={idx} link={link} description={description} />
+          ))}
+        </div>
+        {socials.length == 0 && <p>Nothing here yet!</p>}
       </div>
     </div>
   );
