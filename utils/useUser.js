@@ -23,7 +23,6 @@ const useAuth = () => {
       .then(async (response) => {
         handleUser(response.user);
         if (fn) {
-          console.log(fn);
           await fn(response);
         }
         router.back();

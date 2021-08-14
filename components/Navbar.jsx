@@ -1,5 +1,6 @@
 import useUser from "@/utils/useUser";
 import Link from "next/link";
+import Image from "next/image";
 const Navbar = () => {
   const { user, logout } = useUser();
   return (
@@ -11,7 +12,13 @@ const Navbar = () => {
           <a>Cloudlinq</a>
         </Link>
         {user ? (
-          <button onClick={() => logout()}>Sign Out</button>
+          <div className={"flex gap-4 items-center"}>
+            <div className={"flex gap-2 items-center"}>
+              <img src={user.photoURL} className={"h-9 w-9 rounded-full"} />
+              <span>{user.displayName}</span>
+            </div>
+            |<button onClick={() => logout()}>Sign Out</button>
+          </div>
         ) : (
           <Link href={"/sign-in"}>
             <a>Sign In</a>
