@@ -53,6 +53,12 @@ const Create = ({ usedNames }) => {
       about: `Hi! I'm ${user.displayName}.`,
     }).key;
     const updates = {};
+    updates[`previews/${key}`] = {
+      name: pageName,
+      creatorName: user.displayName,
+      profileImage: user.photoURL,
+      about: `Hi! I'm ${user.displayName}`,
+    };
     updates[`users/${user.uid}/pages/${key}`] = pageName;
     updates[`pageNames/${pageName}`] = key;
     await db.ref().update(updates);
@@ -109,7 +115,7 @@ const Create = ({ usedNames }) => {
           </Link>
         </p>
       </section>
-      <section className={"bg-gray-100 w-full py-20"}>
+      <section className={"bg-gray-100 w-full pt-24 pb-28"}>
         <div className={"max-w-5xl mx-auto"}>
           <h2 className={"text-2xl"}>Your Cloudlinq Pages</h2>
           <div className={"grid grid-cols-3 gap-4 mt-4"}>

@@ -75,6 +75,10 @@ const EditPage = ({
   };
 
   const saveChanges = async () => {
+    const previewUpdates = {
+      creatorName: newCreatorName,
+      about: newAbout,
+    };
     const updatedVals = {
       creatorName: newCreatorName,
       about: newAbout,
@@ -89,9 +93,11 @@ const EditPage = ({
         .ref(`pages/${pageKey}/profileImage`)
         .getDownloadURL();
       updatedVals.profileImage = newImageUrl;
+      previewUpdates.profileImage = newImageUrl;
     }
     const db = firebase.database();
     await db.ref(`pages/${pageKey}`).update(updatedVals);
+    await db.ref(`previews/${pageKey}`).update(previewUpdates);
     setUnsaved(unsavedDefaults);
     setHasUnsavedChanges(false);
     router.replace(router.asPath, router.asPath, { scroll: false });

@@ -100,7 +100,10 @@ const Social = ({
     );
   }
   return (
-    <a href={link} className={"block"}>
+    <a
+      href={link.startsWith("https://") ? link : `https://${link}`}
+      className={"block"}
+    >
       <div className={"bg-gray-100 hover:shadow py-4 px-4 rounded"}>
         <div className="flex items-center gap-4 font-medium">
           {Website ? (

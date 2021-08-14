@@ -49,7 +49,7 @@ const Page = ({
       </Link>
       <div className={"mt-8"}>
         <h3 className={"text-xl font-medium wavy mb-2"}>About Me</h3>
-        <p className={"text-lg text-gray-500"}>{about}</p>
+        <p className={"text-lg text-gray-500 whitespace-pre-wrap"}>{about}</p>
       </div>
       <div className={"mt-8"}>
         <div className={"flex justify-between"}>
