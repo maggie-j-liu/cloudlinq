@@ -4,16 +4,11 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Next.js + TailwindCSS + Firebase Starter</title>
-        <meta
-          name="description"
-          content="A Next.js + TailwindCSS + Firebase starter"
-        />
+        <title>Cloudlinq</title>
+        <meta name="description" content="Share your links" />
       </Head>
-      <main className={"flex items-center justify-center w-screen h-screen"}>
-        <h1 className={"text-4xl font-bold text-indigo-800 hover:italic"}>
-          A Next.js + TailwindCSS + Firebase Starter
-        </h1>
+      <main>
+        <h1 className={"text-4xl font-bold text-indigo-800"}>Cloudlinq</h1>
       </main>
     </div>
   );
