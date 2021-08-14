@@ -10,6 +10,11 @@ export default function Home() {
       <main>
         <h1 className={"text-4xl font-bold text-indigo-800"}>Cloudlinq</h1>
       </main>
+      <p className={"text-lg text-black font-semibold"}>
+        Networking is one button away.
+      </p>
+
+      <footer></footer>
     </div>
   );
 }
