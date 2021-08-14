@@ -3,7 +3,7 @@ import Link from "next/link";
 const Navbar = () => {
   const { user, logout } = useUser();
   return (
-    <nav className={"bg-gray-100 h-16 fixed w-full top-0"}>
+    <nav className={"bg-gray-100 h-16 sticky w-full top-0 px-16"}>
       <div
         className={"h-full flex items-center justify-between max-w-5xl mx-auto"}
       >

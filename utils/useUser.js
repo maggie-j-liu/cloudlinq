@@ -22,7 +22,10 @@ const useAuth = () => {
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(async (response) => {
         handleUser(response.user);
-        await fn(response);
+        if (fn) {
+          console.log(fn);
+          await fn(response);
+        }
         router.back();
       });
   };
@@ -33,7 +36,9 @@ const useAuth = () => {
       .createUserWithEmailAndPassword(email, password)
       .then(async (response) => {
         handleUser(response.user);
-        await fn(response, username);
+        if (fn) {
+          await fn(response, username);
+        }
         router.back();
       });
   };
