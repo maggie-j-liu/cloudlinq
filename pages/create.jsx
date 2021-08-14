@@ -114,7 +114,7 @@ const Create = ({ usedNames }) => {
           <h2 className={"text-2xl"}>Your Cloudlinq Pages</h2>
           <div className={"grid grid-cols-3 gap-4 mt-4"}>
             {userPages.map((page) => (
-              <Link href={`/${page}`}>
+              <Link href={`/${page}`} key={page}>
                 <a
                   className={
                     "bg-white py-4 px-4 rounded block shadow-md hover:font-medium hover:wavy hover:shadow-xl"
