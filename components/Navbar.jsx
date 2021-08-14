@@ -8,9 +8,14 @@ const Navbar = () => {
       <div
         className={"h-full flex items-center justify-between max-w-5xl mx-auto"}
       >
-        <Link href={"/"}>
-          <a>Cloudlinq</a>
-        </Link>
+        <div className={"space-x-12"}>
+          <Link href={"/"}>
+            <a>Cloudlinq</a>
+          </Link>
+          <Link href={"/create"}>
+            <a>Create</a>
+          </Link>
+        </div>
         {user ? (
           <div className={"flex gap-4 items-center"}>
             <div className={"flex gap-2 items-center"}>

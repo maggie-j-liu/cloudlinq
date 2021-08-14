@@ -30,10 +30,12 @@ const Create = ({ usedNames }) => {
     const key = db.ref("pages").push({
       name: pageName,
       creator: user.uid,
+      creatorName: user.displayName,
+      profileImage: user.photoURL,
     }).key;
     const updates = {};
     updates[`users/${user.uid}/pages/${key}`] = pageName;
-    updates[`pageNames/${pageName}`] = true;
+    updates[`pageNames/${pageName}`] = key;
     await db.ref().update(updates);
     usedNames.push(pageName);
     setPageName("");
