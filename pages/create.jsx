@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import firebase from "@/utils/firebase";
 import useUser from "@/utils/useUser";
 import router from "next/router";
-const notAllowedPageNames = ["create", "sign-in"];
+const notAllowedPageNames = ["create", "sign-in", "explore"];
 const Create = ({ usedNames }) => {
   const { user } = useUser();
   const [pageName, setPageName] = useState("");

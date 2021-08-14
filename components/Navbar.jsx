@@ -10,10 +10,13 @@ const Navbar = () => {
       >
         <div className={"space-x-12"}>
           <Link href={"/"}>
-            <a>Cloudlinq</a>
+            <a className={"font-bold hover:wavy"}>Cloudlinq</a>
           </Link>
           <Link href={"/create"}>
-            <a>Create</a>
+            <a className={"hover:wavy"}>Create</a>
+          </Link>
+          <Link href={"/explore"}>
+            <a className={"hover:wavy"}>Explore</a>
           </Link>
         </div>
         {user ? (
@@ -26,11 +29,14 @@ const Navbar = () => {
               />
               <span>{user.displayName}</span>
             </div>
-            |<button onClick={() => logout()}>Sign Out</button>
+            |
+            <button className={"hover:wavy"} onClick={() => logout()}>
+              Sign Out
+            </button>
           </div>
         ) : (
           <Link href={"/sign-in"}>
-            <a>Sign In</a>
+            <a className={"hover:wavy"}>Sign In</a>
           </Link>
         )}
       </div>
