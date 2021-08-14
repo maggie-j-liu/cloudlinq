@@ -10,7 +10,7 @@ const Page = ({
   creatorName,
   profileImage,
   about,
-  socials,
+  socials = [],
   error,
 }) => {
   const { user } = useUser();
