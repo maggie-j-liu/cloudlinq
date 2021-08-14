@@ -1,6 +1,5 @@
 import firebase from "./firebase";
-const saveUserPhoto = async (response) => {
-  console.log(response.user.photoURL);
+const processUser = async (response) => {
   const { additionalUserInfo, user } = response;
   if (!additionalUserInfo.isNewUser) return;
   const photoBlob = await fetch(user.photoURL).then((res) => res.blob());
@@ -11,7 +10,13 @@ const saveUserPhoto = async (response) => {
   await user.updateProfile({
     photoURL: url,
   });
-  console.log(user);
+  //console.log(user);
+  const db = firebase.database();
+  db.ref(`users/${user.uid}`).set({
+    username: user.displayName,
+    picture: url,
+    pages: [],
+  });
 };
 
-export default saveUserPhoto;
+export default processUser;

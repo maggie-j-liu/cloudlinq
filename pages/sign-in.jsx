@@ -1,6 +1,6 @@
 import useUser from "@/utils/useUser";
 import { FcGoogle } from "react-icons/fc";
-import saveUserPhoto from "@/utils/saveUserPhoto";
+import processUser from "@/utils/processUser";
 
 const SignIn = () => {
   const { user, signInWithGoogle } = useUser();
@@ -21,7 +21,7 @@ const SignIn = () => {
           className={
             "bg-white glow flex items-center gap-2 justify-center border-2 border-red-300 px-4 py-2 rounded-md shadow-md hover:shadow-lg"
           }
-          onClick={() => signInWithGoogle(saveUserPhoto)}
+          onClick={() => signInWithGoogle(processUser)}
         >
           <FcGoogle className={"h-6 w-6"} />
           Sign in with Google

@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.wavy {
-  text-decoration: underline;
-  text-decoration-style: wavy;
+@layer utilities {
+  .wavy {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+  }
+
+  .input-box {
+    @apply border-gray-400 rounded;
+  }
 }
