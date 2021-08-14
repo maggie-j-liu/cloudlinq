@@ -4,7 +4,11 @@ import {
   FiLinkedin,
   FiLink,
   FiFacebook,
+  FiTwitter,
+  FiYoutube,
 } from "react-icons/fi";
+import { RiSnapchatLine } from "react-icons/ri";
+import { SiTiktok } from "react-icons/si";
 const popular = {
   github: {
     link: "github.com",
@@ -21,6 +25,22 @@ const popular = {
   facebook: {
     link: "facebook.com",
     icon: FiFacebook,
+  },
+  twitter: {
+    link: "twitter.com",
+    icon: FiTwitter,
+  },
+  snapchat: {
+    link: "snapchat.com",
+    icon: RiSnapchatLine,
+  },
+  tiktok: {
+    link: "tiktok.com",
+    icon: SiTiktok,
+  },
+  youtube: {
+    link: "youtube.com",
+    icon: FiYoutube,
   },
 };
 const Social = ({
