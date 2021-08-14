@@ -153,14 +153,8 @@ const EditPage = ({
 
 export default EditPage;
 
-export const getStaticPaths = () => ({
-  paths: [],
-  fallback: "blocking",
-});
-
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   return {
     props: await getPageInfo(params.pagename),
-    revalidate: 60 * 60,
   };
 };

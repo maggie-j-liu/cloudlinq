@@ -40,14 +40,8 @@ const Page = ({ name, creator, creatorName, profileImage, about, error }) => {
 
 export default Page;
 
-export const getStaticPaths = () => ({
-  paths: [],
-  fallback: "blocking",
-});
-
-export const getStaticProps = async ({ params }) => {
+export const getServerSideProps = async ({ params }) => {
   return {
     props: await getPageInfo(params.pagename),
-    revalidate: 60 * 60,
   };
 };
