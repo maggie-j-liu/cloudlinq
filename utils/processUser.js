@@ -4,9 +4,11 @@ const processUser = async (response) => {
   if (!additionalUserInfo.isNewUser) return;
   const photoBlob = await fetch(user.photoURL).then((res) => res.blob());
   const storage = firebase.storage();
-  const imageRef = storage.ref(`${user.uid}/profilePicture`);
+  const imageRef = storage.ref(`users/${user.uid}/profilePicture`);
   await imageRef.put(photoBlob);
-  const url = await storage.ref(`${user.uid}/profilePicture`).getDownloadURL();
+  const url = await storage
+    .ref(`users/${user.uid}/profilePicture`)
+    .getDownloadURL();
   await user.updateProfile({
     photoURL: url,
   });
