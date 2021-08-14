@@ -74,7 +74,7 @@ const Create = ({ usedNames }) => {
       </button>
       <p>
         Your page will appear at{" "}
-        <Link href={`/${pageName}`}>
+        <Link href={`/${pageName}`} prefetch={false}>
           <a className={"hover:font-bold"}>
             <span className={"wavy"}>cloudlinq.co/</span>
             {pageName ? (

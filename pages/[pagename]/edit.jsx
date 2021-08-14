@@ -161,5 +161,6 @@ export const getStaticPaths = () => ({
 export const getStaticProps = async ({ params }) => {
   return {
     props: await getPageInfo(params.pagename),
+    revalidate: 60 * 60,
   };
 };
