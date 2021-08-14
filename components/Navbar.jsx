@@ -14,7 +14,11 @@ const Navbar = () => {
         {user ? (
           <div className={"flex gap-4 items-center"}>
             <div className={"flex gap-2 items-center"}>
-              <img src={user.photoURL} className={"h-9 w-9 rounded-full"} />
+              <img
+                src={user.photoURL}
+                alt={`${user.displayName}'s picture`}
+                className={"h-9 w-9 rounded-full"}
+              />
               <span>{user.displayName}</span>
             </div>
             |<button onClick={() => logout()}>Sign Out</button>
