@@ -11,6 +11,14 @@ module.exports = {
       },
       colors: {
         primary: colors.blue,
+        theme: {
+          lighter: "var(--color-theme-lighter)",
+          light: "var(--color-theme-light)",
+          DEFAULT: "var(--color-theme-base)",
+          dark: "var(--color-theme-dark)",
+          darker: "var(--color-theme-darker)",
+          bg: "var(--color-theme-bg)",
+        },
       },
     },
   },

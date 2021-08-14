@@ -51,6 +51,7 @@ const Create = ({ usedNames }) => {
       creatorName: user.displayName,
       profileImage: user.photoURL,
       about: `Hi! I'm ${user.displayName}.`,
+      color: "#0d6cf2",
     }).key;
     const updates = {};
     updates[`previews/${key}`] = {
@@ -58,6 +59,7 @@ const Create = ({ usedNames }) => {
       creatorName: user.displayName,
       profileImage: user.photoURL,
       about: `Hi! I'm ${user.displayName}`,
+      color: "#0d6cf2",
     };
     updates[`users/${user.uid}/pages/${key}`] = pageName;
     updates[`pageNames/${pageName}`] = key;
