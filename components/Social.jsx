@@ -9,6 +9,7 @@ import {
 } from "react-icons/fi";
 import { RiSnapchatLine } from "react-icons/ri";
 import { SiTiktok } from "react-icons/si";
+import { HiOutlineTrash } from "react-icons/hi";
 const popular = {
   github: {
     link: "github.com",
@@ -51,6 +52,7 @@ const Social = ({
   onLinkBlur,
   onDescriptionBlur,
   onDescriptionChange,
+  onDelete,
 }) => {
   let Website = null;
   for (const [sitename, val] of Object.entries(popular)) {
@@ -61,7 +63,7 @@ const Social = ({
   }
   if (edit) {
     return (
-      <div className={"space-y-4"}>
+      <div className={"flex flex-col space-y-4"}>
         <div className={"flex items-center gap-4"}>
           {Website ? (
             <Website className={"h-6 w-6"} />
@@ -85,27 +87,36 @@ const Social = ({
             onBlur={onDescriptionBlur}
           />
         </div>
+        <button
+          className={
+            "ml-auto flex items-center gap-2 bg-red-200 px-2 py-1 rounded-md hover:bg-red-300"
+          }
+          onClick={onDelete}
+        >
+          <HiOutlineTrash className={"h-5 w-5"} />
+          Delete
+        </button>
       </div>
     );
   }
   return (
-    <div className={"bg-gray-100 hover:shadow py-4 px-4 rounded"}>
-      <div>
-        <a href={link} className={"flex items-center gap-4 font-medium"}>
+    <a href={link} className={"block"}>
+      <div className={"bg-gray-100 hover:shadow py-4 px-4 rounded"}>
+        <div className="flex items-center gap-4 font-medium">
           {Website ? (
             <Website className={"h-6 w-6"} />
           ) : (
             <FiLink className={"h-6 w-6"} />
           )}
           {link}
-        </a>
-      </div>
-      {description && (
-        <div className="w-full flex mt-2">
-          <div className={"ml-10 flex-grow"}>{description}</div>
         </div>
-      )}
-    </div>
+        {description && (
+          <div className="w-full flex mt-2">
+            <div className={"ml-10 flex-grow"}>{description}</div>
+          </div>
+        )}
+      </div>
+    </a>
   );
 };
 export default Social;

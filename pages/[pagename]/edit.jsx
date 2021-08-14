@@ -173,7 +173,7 @@ const EditPage = ({
           <h3 className={"text-xl font-medium wavy mb-2"}>My Socials</h3>
           <button
             className={
-              "flex items-center gap-2 bg-primary-100 px-4 py-1 rounded-md"
+              "flex items-center gap-2 bg-primary-100 hover:bg-primary-200 px-4 py-1 rounded-md"
             }
             onClick={() => addNewSocial()}
           >
@@ -201,8 +201,15 @@ const EditPage = ({
                 unsaved.socials = true;
                 setUnsaved({ ...unsaved });
               }}
-              onLinkBlur={() => checkForUnsavedChanges()}
-              onDescriptionBlur={() => checkForUnsavedChanges()}
+              onLinkBlur={() => setHasUnsavedChanges(true)}
+              onDescriptionBlur={() => setHasUnsavedChanges(true)}
+              onDelete={() => {
+                newSocials.splice(idx, 1);
+                setNewSocials([...newSocials]);
+                unsaved.socials = true;
+                setUnsaved({ ...unsaved });
+                setHasUnsavedChanges(true);
+              }}
             />
           ))}
         </div>
