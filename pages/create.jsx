@@ -32,6 +32,7 @@ const Create = ({ usedNames }) => {
       creator: user.uid,
       creatorName: user.displayName,
       profileImage: user.photoURL,
+      about: `Hi! I'm ${user.displayName}.`,
     }).key;
     const updates = {};
     updates[`users/${user.uid}/pages/${key}`] = pageName;

@@ -11,4 +11,8 @@
   .input-box {
     @apply border-gray-400 rounded;
   }
+
+  .borderless-input {
+    @apply border-none bg-gray-100 rounded-md focus:ring-2;
+  }
 }

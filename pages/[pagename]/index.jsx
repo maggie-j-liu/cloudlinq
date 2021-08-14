@@ -1,10 +1,12 @@
 import firebase from "@/utils/firebase";
 import useUser from "@/utils/useUser";
 import Link from "next/link";
-const Page = ({ name, creator, creatorName, profileImage, error }) => {
+import getPageInfo from "@/utils/getPageInfo";
+import FourOhFour from "@/components/FourOhFour";
+const Page = ({ name, creator, creatorName, profileImage, about, error }) => {
   const { user } = useUser();
   if (error) {
-    return <div>404</div>;
+    return <FourOhFour />;
   }
   return (
     <div className={"mt-8 flex flex-col w-full max-w-4xl mx-auto"}>
@@ -30,7 +32,7 @@ const Page = ({ name, creator, creatorName, profileImage, error }) => {
       <h2 className={"self-center text-xl mt-2 text-gray-700"}>@{name}</h2>
       <div className={"mt-8"}>
         <h3 className={"text-xl font-medium wavy"}>About Me</h3>
-        <p className={"mt-2 text-lg text-gray-500"}>Hi! I'm {creatorName}.</p>
+        <p className={"mt-2 text-lg text-gray-500"}>{about}</p>
       </div>
     </div>
   );
@@ -44,26 +46,7 @@ export const getStaticPaths = () => ({
 });
 
 export const getStaticProps = async ({ params }) => {
-  const db = firebase.database();
-  const currentPageKey = await db
-    .ref(`pageNames/${params.pagename}`)
-    .once("value")
-    .then((snap) => snap.val());
-  if (!currentPageKey) {
-    return {
-      props: {
-        error: true,
-      },
-    };
-  }
-  const pageInfo = await db
-    .ref(`pages/${currentPageKey}`)
-    .once("value")
-    .then((snap) => snap.val());
   return {
-    props: {
-      error: false,
-      ...pageInfo,
-    },
+    props: await getPageInfo(params.pagename),
   };
 };
