@@ -5,6 +5,7 @@ import google from "../public/google.png";
 import key from "../public/key.png";
 import Link from "next/link";
 import useUser from "@/utils/useUser";
+import demoimage from "../public/demoimage.png";
 
 export default function Home() {
   const { user } = useUser();
@@ -15,7 +16,7 @@ export default function Home() {
         <meta name="description" content="Share your links" />
       </Head>
       <main className="pt-24 space-y-24">
-        <section className="w-full max-w-5xl mx-auto">
+        <section className="w-full max-w-5xl mx-auto flex justify-between">
           <div className={"max-w-lg mt-8 space-y-8"}>
             <h1 className={"text-4xl font-semibold text-primary-600"}>
               Network <span className={"text-gray-900"}>All-In-One Link</span>
@@ -33,6 +34,9 @@ export default function Home() {
                 Get Started
               </a>
             </Link>
+          </div>
+          <div className={"max-w-md"}>
+            <Image src={demoimage} placeholder="blur" />
           </div>
         </section>
         <section>
