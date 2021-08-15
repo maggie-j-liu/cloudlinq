@@ -126,14 +126,24 @@ const EditPage = ({
     <div className={"pt-24 pb-8 w-full bg-theme-bg min-h-screen"}>
       <div className={"max-w-4xl mx-auto flex flex-col"}>
         <div>
-          <button
-            className={`${
-              hasUnsavedChanges || showSavedMessage ? "block" : "hidden"
-            } fixed bottom-8 right-8 bg-theme-lighter hover:bg-theme-light px-4 py-1 rounded-md`}
-            onClick={() => saveChanges()}
-          >
-            {showSavedMessage ? "Saved!" : "Save Changes"}
-          </button>
+          {showSavedMessage ? (
+            <div
+              className={
+                "fixed bottom-8 right-8 bg-theme-lighter hover:bg-theme-light px-4 py-1 rounded-md"
+              }
+            >
+              Saved!
+            </div>
+          ) : (
+            <button
+              className={
+                "fixed bottom-8 right-8 bg-theme-lighter hover:bg-theme-light px-4 py-1 rounded-md"
+              }
+              onClick={() => saveChanges()}
+            >
+              Save Changes
+            </button>
+          )}
         </div>
         <div className={"fixed top-24 right-8 flex items-center gap-2"}>
           <p>Pick a color</p>
