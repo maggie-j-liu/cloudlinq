@@ -28,7 +28,7 @@ const ProfileCard = ({ page }) => {
           </h4>
           <p
             className={
-              "text-gray-600 self-start line-clamp-5 whitespace-pre-wrap"
+              "text-gray-600 self-start line-clamp-5 whitespace-pre-wrap w-full"
             }
           >
             {page.about}
