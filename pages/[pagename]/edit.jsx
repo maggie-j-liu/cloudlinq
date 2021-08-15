@@ -44,7 +44,7 @@ const EditPage = ({
 
   const checkForUnsavedChanges = () => {
     for (const val of Object.values(unsaved)) {
-      console.log(val);
+      //console.log(val);
       if (val) {
         setHasUnsavedChanges(true);
         return;
@@ -76,7 +76,7 @@ const EditPage = ({
   };
 
   const addNewSocial = () => {
-    console.log("addnew");
+    //console.log("addnew");
     setNewSocials([...newSocials, { link: "", description: "" }]);
   };
 

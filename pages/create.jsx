@@ -149,7 +149,7 @@ export const getServerSideProps = async () => {
     .then((snap) => snap.val());
   const usedNames = Object.keys(usedNamesMap ?? []);
 
-  console.log(usedNames);
+  //console.log(usedNames);
   return {
     props: {
       usedNames: usedNames,

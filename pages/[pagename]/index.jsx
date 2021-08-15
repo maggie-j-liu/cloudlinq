@@ -18,7 +18,7 @@ const Page = ({
 }) => {
   const { user } = useUser();
   const hsl = hexToHsl(color);
-  console.log(hsl);
+  //console.log(hsl);
   if (error) {
     return <FourOhFour />;
   }
