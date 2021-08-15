@@ -41,6 +41,9 @@ const Create = ({ usedNames }) => {
     }
   };
   const createPage = async () => {
+    if (!pageName.length) {
+      return;
+    }
     if (!!error) {
       return;
     }
@@ -96,7 +99,7 @@ const Create = ({ usedNames }) => {
           className={
             "disabled:bg-gray-400 disabled:cursor-not-allowed bg-primary-600 hover:bg-primary-500 text-white text-xl px-2 py-1 rounded-md"
           }
-          disabled={!!error}
+          disabled={!!error || !pageName.length}
           onClick={() => createPage()}
         >
           Create!
