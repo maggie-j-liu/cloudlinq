@@ -15,7 +15,7 @@ export default function Home() {
         <title>Cloudlinq</title>
         <meta name="description" content="Share your links" />
       </Head>
-      <main className="pt-24 space-y-24">
+      <main className="pt-24 pb-16 space-y-24">
         <section className="w-full max-w-5xl mx-auto flex justify-between">
           <div className={"max-w-lg mt-8 space-y-8"}>
             <h1 className={"text-4xl font-semibold text-primary-600"}>
