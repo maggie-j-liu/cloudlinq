@@ -12,7 +12,7 @@ const Explore = ({ pages }) => {
         </h2>
         <div className={"grid grid-cols-3 gap-8 mt-16"}>
           {Object.values(pages).map((page) => (
-            <ProfileCard page={page} />
+            <ProfileCard page={page} key={page.name} />
           ))}
         </div>
       </section>
