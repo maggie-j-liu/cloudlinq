@@ -79,7 +79,7 @@ const EditPage = ({
 
   const addNewSocial = () => {
     //console.log("addnew");
-    setNewSocials([...newSocials, { link: "", description: "" }]);
+    setNewSocials([{ link: "", description: "" }, ...newSocials]);
   };
 
   const saveChanges = async () => {
