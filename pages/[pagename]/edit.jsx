@@ -42,6 +42,8 @@ const EditPage = ({
   const router = useRouter();
   const inputRef = useRef();
 
+  const [showSavedMessage, setShowSavedMessage] = useState(false);
+
   const checkForUnsavedChanges = () => {
     for (const val of Object.values(unsaved)) {
       //console.log(val);
@@ -108,7 +110,11 @@ const EditPage = ({
     await db.ref(`previews/${pageKey}`).update(previewUpdates);
     setUnsaved(unsavedDefaults);
     setHasUnsavedChanges(false);
-    router.replace(router.asPath, router.asPath, { scroll: false });
+    setShowSavedMessage(true);
+    setTimeout(() => {
+      setShowSavedMessage(false);
+      router.replace(router.asPath, router.asPath, { scroll: false });
+    }, 2000);
   };
   if (loading) {
     return null;
@@ -122,11 +128,11 @@ const EditPage = ({
         <div>
           <button
             className={`${
-              hasUnsavedChanges ? "block" : "hidden"
+              hasUnsavedChanges || showSavedMessage ? "block" : "hidden"
             } fixed bottom-8 right-8 bg-theme-lighter hover:bg-theme-light px-4 py-1 rounded-md`}
             onClick={() => saveChanges()}
           >
-            Save Changes
+            {showSavedMessage ? "Saved!" : "Save Changes"}
           </button>
         </div>
         <div className={"fixed top-24 right-8 flex items-center gap-2"}>

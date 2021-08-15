@@ -8,7 +8,7 @@ const SignIn = () => {
     return null;
   }
   return (
-    <div className={"w-full flex justify-center items-start"}>
+    <div className={"pt-16 w-full flex justify-center items-start"}>
       <div
         className={
           "bg-gray-50 px-16 py-12 mt-14 flex flex-col items-center gap-6"
