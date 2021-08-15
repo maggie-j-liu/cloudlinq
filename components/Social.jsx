@@ -76,6 +76,7 @@ const Social = ({
             onChange={onLinkChange}
             onBlur={onLinkBlur}
             className={"w-full borderless-input"}
+            placeholder="Link"
           />
         </div>
         <div className={"w-full flex"}>
