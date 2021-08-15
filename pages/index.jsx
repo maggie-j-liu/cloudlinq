@@ -1,6 +1,13 @@
 import Head from "next/head";
+import Image from "next/image";
+import link from "../public/link.png";
+import google from "../public/google.png";
+import key from "../public/key.png";
+import Link from "next/link";
+import useUser from "@/utils/useUser";
 
 export default function Home() {
+  const { user } = useUser();
   return (
     <div>
       <Head>
@@ -17,13 +24,15 @@ export default function Home() {
               Share your profile with the people who matter most and maximize
               views of your social bio in just one click.
             </p>
-            <button
-              className={
-                "bg-gradient-to-r from-primary-400 to-primary-500 px-4 py-2 rounded-md hover:scale-110 duration-150 text-white font-medium text-xl"
-              }
-            >
-              Get Started
-            </button>
+            <Link href={user ? "/create" : "/sign-in"}>
+              <a
+                className={
+                  "block w-max bg-gradient-to-r from-primary-400 to-primary-500 px-4 py-2 rounded-md hover:scale-110 duration-150 text-white font-medium text-xl"
+                }
+              >
+                Get Started
+              </a>
+            </Link>
           </div>
         </section>
         <section>
@@ -35,7 +44,8 @@ export default function Home() {
               "mt-8 grid grid-cols-3 gap-8 max-w-5xl mx-auto text-center"
             }
           >
-            <div>
+            <div className={"space-y-4"}>
+              <Image src={link} height={56} width={56} placeholder="blur" />
               <h3 className={"mb-4 text-xl font-medium text-primary-500"}>
                 Just One Link
               </h3>
@@ -44,15 +54,17 @@ export default function Home() {
                 time
               </p>
             </div>
-            <div>
-              <h3 className={"mb-4 text-xl font-medium text-primary-500"}>
+            <div className={"space-y-4"}>
+              <Image src={google} height={56} width={56} placeholder="blur" />
+              <h3 className={"text-xl font-medium text-primary-500"}>
                 Powerful Integration
               </h3>
               <p>
                 Connect to Google to create your account easily and seamlessly
               </p>
             </div>
-            <div>
+            <div className={"space-y-4"}>
+              <Image src={key} height={56} width={56} placeholder="blur" />
               <h3 className={"mb-4 text-xl font-medium text-primary-500"}>
                 Easy Accessibility
               </h3>
