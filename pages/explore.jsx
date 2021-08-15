@@ -3,7 +3,9 @@ import firebase from "@/utils/firebase";
 const Explore = ({ pages }) => {
   return (
     <div
-      className={"bg-primary-50 text-primary-600 bg-circut py-24 min-h-screen"}
+      className={
+        "bg-primary-50 text-primary-600 bg-circut pt-40 pb-24 min-h-screen"
+      }
     >
       <section className={"max-w-4xl mx-auto w-full text-gray-900"}>
         <h1 className={"text-4xl font-semibold"}>Explore</h1>

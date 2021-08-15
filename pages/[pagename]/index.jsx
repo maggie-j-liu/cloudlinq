@@ -5,6 +5,7 @@ import getPageInfo from "@/utils/getPageInfo";
 import FourOhFour from "@/components/FourOhFour";
 import Social from "@/components/Social";
 import hexToHsl from "hex-to-hsl";
+import { FiEdit } from "react-icons/fi";
 const Page = ({
   name,
   creator,
@@ -22,15 +23,16 @@ const Page = ({
     return <FourOhFour />;
   }
   return (
-    <div className={"py-8 w-full bg-theme-bg min-h-screen"}>
+    <div className={"pt-24 pb-8 w-full bg-theme-bg min-h-screen"}>
       <div className={"max-w-4xl mx-auto flex flex-col"}>
         {user && creator === user.uid && (
           <Link href={`/${name}/edit`}>
             <a
               className={
-                "fixed bottom-4 right-9 bg-theme-light px-2 py-1 rounded-md hover:scale-110 duration-150 my-4"
+                "flex gap-2 items-center fixed bottom-4 right-9 bg-theme-light px-2 py-1 rounded-md hover:scale-110 duration-150 my-4"
               }
             >
+              <FiEdit />
               Edit your page
             </a>
           </Link>

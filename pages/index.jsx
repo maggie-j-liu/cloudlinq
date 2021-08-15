@@ -9,7 +9,7 @@ export default function Home() {
         <title>Cloudlinq</title>
         <meta name="description" content="Share your links" />
       </Head>
-      <main>
+      <main className="pt-24">
         <h1 className={"text-4xl font-bold text-primary-600 text-center"}>
           Cloudlinq
         </h1>

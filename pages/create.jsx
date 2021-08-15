@@ -73,7 +73,7 @@ const Create = ({ usedNames }) => {
     return null;
   }
   return (
-    <div className={""}>
+    <div className={"pt-16 min-h-screen"}>
       <section className={"flex flex-col items-center gap-8 my-16"}>
         <h1 className={"text-4xl font-bold text-center"}>
           Create your own <span className={"text-primary-500"}>Cloudlinq</span>{" "}

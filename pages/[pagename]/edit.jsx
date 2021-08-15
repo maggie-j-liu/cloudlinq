@@ -117,7 +117,7 @@ const EditPage = ({
     return <FourOhFour />;
   }
   return (
-    <div className={"py-8 w-full bg-theme-bg min-h-screen"}>
+    <div className={"pt-24 pb-8 w-full bg-theme-bg min-h-screen"}>
       <div className={"max-w-4xl mx-auto flex flex-col"}>
         <div>
           <button
